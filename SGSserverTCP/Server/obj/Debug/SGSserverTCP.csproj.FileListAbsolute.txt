@@ -1,0 +1,9 @@
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.exe
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.pdb
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csprojResolveAssemblyReference.cache
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.SGSserverForm.resources
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.GenerateResource.Cache
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.CoreCompileInputs.cache
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.exe
+C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.pdb
