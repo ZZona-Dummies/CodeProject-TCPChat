@@ -1,11 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SGSclient
 {
     static class Program
     {
+        public static SClient client;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -21,8 +22,8 @@ namespace SGSclient
             if (loginForm.DialogResult == DialogResult.OK)
             {
                 SGSClient sgsClientForm = new SGSClient();
-                sgsClientForm.clientSocket = loginForm.clientSocket;
-                sgsClientForm.strName = loginForm.strName;
+                //sgsClientForm.clientSocket = loginForm.clientSocket; //Aqui le pasaba la referencia...
+                //sgsClientForm.strName = loginForm.strName;
 
                 sgsClientForm.ShowDialog();
             }

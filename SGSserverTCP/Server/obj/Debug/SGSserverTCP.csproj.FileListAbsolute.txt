@@ -7,3 +7,13 @@ C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSser
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.CoreCompileInputs.cache
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.exe
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.pdb
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.exe.config
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.exe
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.pdb
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csprojResolveAssemblyReference.cache
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.SGSserverForm.resources
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.Properties.Resources.resources
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.GenerateResource.Cache
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.CoreCompileInputs.cache
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.exe
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.pdb

@@ -8,3 +8,13 @@ C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGS
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.CoreCompileInputs.cache
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.exe
 C:\Users\Álvaro\Downloads\tcpchat\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.pdb
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\bin\Debug\SGSclient.exe.config
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\bin\Debug\SGSclient.exe
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\bin\Debug\SGSclient.pdb
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.SGSClient.resources
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.LoginForm.resources
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.Properties.Resources.resources
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.GenerateResource.Cache
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.CoreCompileInputs.cache
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.exe
+D:\VISUAL STUDIO\Visual Studio Projects\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.pdb

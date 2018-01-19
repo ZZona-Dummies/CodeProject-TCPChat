@@ -1,87 +1,29 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Net;
-using System.Net.Sockets;
 
 namespace SGSclient
 {
-    //The commands for interaction between the server and the client
-    enum Command
-    {
-        Login,      //Log into the server
-        Logout,     //Logout of the server
-        Message,    //Send a text message to all the chat clients
-        List,       //Get a list of users in the chat room from the server
-        Null        //No command
-    }
-
     public partial class SGSClient : Form
     {
-        public Socket clientSocket; //The main client socket
-        public string strName;      //Name by which the user logs into the room
-
-        private byte[] byteData = new byte[1024];
+        private static SGSClient me;
 
         public SGSClient()
         {
             InitializeComponent();
+            me = this;
+            Program.client.ReceiveCallback = ProcessData();
         }
 
-        //Broadcast the message typed by the user to everyone
-        private void btnSend_Click(object sender, EventArgs e)
+        private Action<Data, string> ProcessData()
         {
-            try
+            return (msgReceived, strName) =>
             {
-                //Fill the info for the message to be send
-                Data msgToSend = new Data();
-                
-                msgToSend.strName = strName;
-                msgToSend.strMessage = txtMessage.Text;
-                msgToSend.cmdCommand = Command.Message;
-
-                byte [] byteData = msgToSend.ToByte();
-
-                //Send it to the server
-                clientSocket.BeginSend (byteData, 0, byteData.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
-
-                txtMessage.Text = null;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to send message to the server.", "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }  
-        }
-        
-        private void OnSend(IAsyncResult ar)
-        {
-            try
-            {
-                clientSocket.EndSend(ar);
-            }
-            catch (ObjectDisposedException)
-            { }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void OnReceive(IAsyncResult ar)
-        {
-            try
-            {
-                clientSocket.EndReceive(ar);
-
-                Data msgReceived = new Data(byteData);              
                 //Accordingly process the message received
                 switch (msgReceived.cmdCommand)
                 {
-                    case Command.Login:     
+                    case Command.Login:
                         lstChatters.Items.Add(msgReceived.strName);
                         break;
 
@@ -96,55 +38,25 @@ namespace SGSclient
                         lstChatters.Items.AddRange(msgReceived.strMessage.Split('*'));
                         lstChatters.Items.RemoveAt(lstChatters.Items.Count - 1);
                         txtChatBox.Text += "<<<" + strName + " has joined the room>>>\r\n";
-                        break;                    
+                        break;
                 }
 
                 if (msgReceived.strMessage != null && msgReceived.cmdCommand != Command.List)
                     txtChatBox.Text += msgReceived.strMessage + "\r\n";
+            };
+        }
 
-                byteData = new byte[1024];
-
-                clientSocket.BeginReceive(byteData,
-                                          0, 
-                                          byteData.Length,
-                                          SocketFlags.None,
-                                          new AsyncCallback(OnReceive),
-                                          null);
-                 
-            }
-            catch (ObjectDisposedException)
-            { }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        //Broadcast the message typed by the user to everyone
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            Program.client.Send(txtMessage.Text);
+            txtMessage.Text = "";
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            this.Text = "SGSclientTCP: " + strName;
-            
-            //The user has logged into the system so we now request the server to send
-            //the names of all users who are in the chat room
-            Data msgToSend = new Data ();
-            msgToSend.cmdCommand = Command.List;
-            msgToSend.strName = strName;
-            msgToSend.strMessage = null;
-            
-            byteData = msgToSend.ToByte();
-
-            clientSocket.BeginSend(byteData, 0, byteData.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
-            
-            byteData = new byte[1024];
-            //Start listening to the data asynchronously
-            clientSocket.BeginReceive(byteData,
-                                       0, 
-                                       byteData.Length,
-                                       SocketFlags.None,
-                                       new AsyncCallback(OnReceive),
-                                       null);
-
+            Text = "SGSclientTCP: " + Program.client.strName;
+            Program.client.List();
         }
 
         private void txtMessage_TextChanged(object sender, EventArgs e)
@@ -157,31 +69,14 @@ namespace SGSclient
 
         private void SGSClient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to leave the chat room?", "SGSclient: " + strName,
+            if (MessageBox.Show("Are you sure you want to leave the chat room?", "SGSclient: " + Program.client.strName,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
             {
                 e.Cancel = true;
                 return;
             }
 
-            try
-            {
-                //Send a message to logout of the server
-                Data msgToSend = new Data ();
-                msgToSend.cmdCommand = Command.Logout;
-                msgToSend.strName = strName;
-                msgToSend.strMessage = null;
-
-                byte[] b = msgToSend.ToByte ();
-                clientSocket.Send(b, 0, b.Length, SocketFlags.None);
-                clientSocket.Close();
-            }
-            catch (ObjectDisposedException)
-            { }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Program.client.Close();
         }
 
         private void txtMessage_KeyDown(object sender, KeyEventArgs e)
@@ -195,7 +90,7 @@ namespace SGSclient
 
     //The data structure by which the server and the client interact with 
     //each other
-    class Data
+    public class Data
     {
         //Default constructor
         public Data()
